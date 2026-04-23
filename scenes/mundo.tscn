@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d2m7khdew7wfj"]
+
+[ext_resource type="PackedScene" uid="uid://dnykp8s61uhm7" path="res://scenes/player.tscn" id="1_wqn8j"]
+[ext_resource type="Texture2D" uid="uid://dfi2kvjixbq3n" path="res://assets/_PNG/b1/5.png" id="2_a2ps7"]
+[ext_resource type="PackedScene" uid="uid://6nkb67hth35q" path="res://mendigo_inimigo.tscn" id="3_0vka0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a2ps7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vka0"]
+size = Vector2(210.10092, 983.86536)
+
+[node name="Mundo" type="Node2D" unique_id=962310539]
+position = Vector2(2, 0)
+
+[node name="Player" parent="." unique_id=2090746723 instance=ExtResource("1_wqn8j")]
+position = Vector2(22, -71)
+
+[node name="Chão" type="StaticBody2D" parent="." unique_id=1931635261]
+position = Vector2(570, 243.99998)
+scale = Vector2(0.61875, 0.75277776)
+physics_material_override = SubResource("PhysicsMaterial_a2ps7")
+
+[node name="chao" type="Sprite2D" parent="Chão" unique_id=731427955]
+position = Vector2(-872.72723, -506.12546)
+texture = ExtResource("2_a2ps7")
+
+[node name="Camera2D" type="Camera2D" parent="Chão" unique_id=1282111784]
+position = Vector2(-875.9596, -414.46494)
+scale = Vector2(1.6161617, 1.3284134)
+
+[node name="Paredeinv1" type="CollisionShape2D" parent="Chão" unique_id=1162146859]
+position = Vector2(-1908.687, -413.1365)
+shape = SubResource("RectangleShape2D_0vka0")
+
+[node name="Paredeinv2" type="CollisionShape2D" parent="Chão" unique_id=310836449]
+position = Vector2(155.15147, -418.45016)
+shape = SubResource("RectangleShape2D_0vka0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chão" unique_id=1019183985]
+polygon = PackedVector2Array(85.656555, -53.136505, 87.272705, 34.538757, -1832.7274, 33.210358, -1832.7274, -57.121765, -1580.6062, -46.494446, -1546.6667, -41.180786, -1490.1011, -45.166046, -1448.0809, -51.808105, -1430.3031, -55.793335, -1302.6263, -45.166046, -1225.0505, -35.867157, -1216.9697, -34.538727, -1197.5758, -35.867157, -1063.4344, -51.808105, -1027.8789, -54.464935, -1006.8688, -54.464935, -966.4647, -50.479675, -929.293, -42.509216, -921.2122, -39.852386, -909.89905, -38.523956, -888.889, -41.180786, -816.1617, -65.092224, -809.697, -66.420654, -787.0708, -66.420654, -756.3637, -66.420654, -643.2324, -65.092224, -612.52527, -66.420654, -596.36365, -70.40588, -588.2829, -71.7343, -573.7374, -70.40588, -501.01016, -61.106995, -405.65662, -57.121765, -237.5758, -58.450165, -140.60608, -59.778595, -69.494995, -58.450165)
+
+[node name="Mendigo_Inimigo" parent="." unique_id=1389955987 instance=ExtResource("3_0vka0")]

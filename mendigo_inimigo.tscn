@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://6nkb67hth35q"]
+
+[ext_resource type="Script" uid="uid://byw0ole1cyjhr" path="res://mendigo_inimigo_andando.gd" id="1_73cdq"]
+[ext_resource type="Texture2D" uid="uid://ci48ik8kln8k6" path="res://assets/Varios_mendigo_atacando-removebg-preview.png" id="1_u54k8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73cdq"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(193, 0, 38, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xhph"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(155, 0, 38, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n13b1"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(114, 0, 37, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f516g"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(432, 170, 72, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqdbn"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(219, 144, 73, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tonu"]
+atlas = ExtResource("1_u54k8")
+region = Rect2(0, 192, 46, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f516g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73cdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xhph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n13b1")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 4.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f516g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tonu")
+}],
+"loop": true,
+"name": &"atacar",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73cdq"]
+size = Vector2(104, 184)
+
+[node name="Mendigo_Inimigo" type="CharacterBody2D" unique_id=1389955987]
+collision_layer = 2
+script = ExtResource("1_73cdq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1407330133]
+position = Vector2(63.99997, 10.000002)
+scale = Vector2(3.5067573, 3.7500005)
+sprite_frames = SubResource("SpriteFrames_f516g")
+animation = &"andando"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=769041272]
+position = Vector2(-241, 104)
+polygon = PackedVector2Array(319, -18, 319, -8, 322, 0, 321, 3, 285, 3, 285, -4, 296, -12, 303, -13, 303, -18, 289, -28, 289, -45, 292, -45, 286, -50, 286, -66, 296, -74, 300, -75, 296, -87, 291, -88, 284, -91, 278, -107, 286, -119, 271, -122, 273, -133, 280, -138, 282, -146, 295, -153, 303, -153, 305, -148, 308, -165, 345, -181, 361, -179, 361, -162, 356, -161, 356, -144, 340, -143, 347, -127, 343, -118, 335, -106, 347, -95, 347, -82, 350, -80, 351, -62, 337, -50, 332, -46, 329, -40, 325, -35, 334, -41, 340, -35, 342, -22, 343, -5, 338, -1, 330, -4, 325, -17)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=240554590]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=44672062]
+position = Vector2(70, 15)
+shape = SubResource("RectangleShape2D_73cdq")

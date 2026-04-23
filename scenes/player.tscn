@@ -1,47 +1,90 @@
 [gd_scene format=3 uid="uid://dnykp8s61uhm7"]
 
-[ext_resource type="Texture2D" uid="uid://blj3oftyumjq0" path="res://assets/Idle.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://blj3oftyumjq0" path="res://assets/Andando.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://cq8ttuuibh83w" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bn0etk2wm84i5" path="res://assets/Andanoooo.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://156gxba8qyp7" path="res://assets/atacar-removebg-preview.png" id="4_dqkch"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 0, 166, 166)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(166, 0, 166, 166)
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 0, 166, 166)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(332, 0, 166, 166)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(166, 375, 166, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 125, 166, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 250, 166, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 332, 250, 166)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g2els")
+"texture": SubResource("AtlasTexture_qlg0r")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
 }],
 "loop": true,
-"name": &"Idle",
-"speed": 3.5
+"name": &"andando",
+"speed": 3.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"pulo",
+"speed": 2.5
 }]
 
-[node name="Player" type="Node2D" unique_id=2090746723]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(48, 118)
+
+[node name="Player" type="CharacterBody2D" unique_id=414123836]
+script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=536274031]
+position = Vector2(-468, 95)
+scale = Vector2(0.91566265, 1)
 sprite_frames = SubResource("SpriteFrames_smehm")
-animation = &"Idle"
+animation = &"atacar"
+autoplay = "andando"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1697160877]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1834792836]
+polygon = PackedVector2Array(-446, 29, -450, 30, -450, 32, -452, 32, -459, 41, -464, 52, -466, 58, -467, 83, -467, 85, -473, 86, -481, 86, -489, 86, -495, 84, -499, 85, -504, 88, -506, 94, -506, 102, -499, 109, -488, 108, -482, 104, -478, 102, -470, 102, -470, 111, -478, 112, -482, 114, -482, 119, -482, 123, -480, 125, -479, 125, -479, 132, -477, 142, -471, 153, -469, 156, -439, 156, -431, 144, -430, 133, -429, 125, -424, 118, -426, 112, -429, 110, -435, 110, -435, 107, -417, 88, -410, 66, -414, 40, -425, 30, -429, 28, -440, 28)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=638167570]
+[node name="Area2D" type="Area2D" parent="." unique_id=1695289184]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1339557229]
+position = Vector2(-432, 93)
+shape = SubResource("RectangleShape2D_dqkch")
